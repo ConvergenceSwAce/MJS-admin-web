@@ -20,11 +20,14 @@ import App from "App";
 
 // Material Dashboard 2 React Context Provider
 import { MaterialUIControllerProvider } from "context";
+import { RecoilRoot } from "recoil";
 
 ReactDOM.render(
   <BrowserRouter>
     <MaterialUIControllerProvider>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </MaterialUIControllerProvider>
   </BrowserRouter>,
   document.getElementById("root")
