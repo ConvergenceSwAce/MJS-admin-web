@@ -29,21 +29,9 @@ import { useEffect, useState } from "react";
 // Images
 
 export default function data() {
-  async function getMealInfo() {
-    await axios.get("/info").then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
-  }
-
   const [meal, setMeal] = useState([
     { date: "2021-10-01", day: "월", lunchA: "밥", lunchB: "밥", dinner: "밥" },
   ]);
-
-  // useEffect(() => {
-  //   setMeal(getMealInfo());
-  //   console.log(meal);
-  // }, []);
 
   return {
     columns: [
