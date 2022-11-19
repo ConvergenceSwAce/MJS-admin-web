@@ -22,20 +22,20 @@ import Card from "@mui/material/Card";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDAlert from "components/MDAlert";
+// import MDAlert from "components/MDAlert";
 import MDButton from "components/MDButton";
 import MDSnackbar from "components/MDSnackbar";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import Footer from "examples/Footer";
+import { TextField } from "@mui/material";
 
 function Notifications() {
   const [successSB, setSuccessSB] = useState(false);
   const [infoSB, setInfoSB] = useState(false);
   const [warningSB, setWarningSB] = useState(false);
-  const [errorSB, setErrorSB] = useState(false);
+  // const [submit, setSubmit] = useState(false);
 
   const openSuccessSB = () => setSuccessSB(true);
   const closeSuccessSB = () => setSuccessSB(false);
@@ -43,25 +43,23 @@ function Notifications() {
   const closeInfoSB = () => setInfoSB(false);
   const openWarningSB = () => setWarningSB(true);
   const closeWarningSB = () => setWarningSB(false);
-  const openErrorSB = () => setErrorSB(true);
-  const closeErrorSB = () => setErrorSB(false);
 
-  const alertContent = (name) => (
-    <MDTypography variant="body2" color="white">
-      A simple {name} alert with{" "}
-      <MDTypography component="a" href="#" variant="body2" fontWeight="medium" color="white">
-        an example link
-      </MDTypography>
-      . Give it a click if you like.
-    </MDTypography>
-  );
+  // const alertContent = (name) => (
+  //   <MDTypography variant="body2" color="white">
+  //     A simple {name} alert with{" "}
+  //     <MDTypography component="a" href="#" variant="body2" fontWeight="medium" color="white">
+  //       an example link
+  //     </MDTypography>
+  //     . Give it a click if you like.
+  //   </MDTypography>
+  // );
 
   const renderSuccessSB = (
     <MDSnackbar
       color="success"
       icon="check"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
+      title="학식 정상 운영중"
+      content="학식이 정상운영중이라 전달했습니다."
       dateTime="11 mins ago"
       open={successSB}
       onClose={closeSuccessSB}
@@ -73,8 +71,8 @@ function Notifications() {
   const renderInfoSB = (
     <MDSnackbar
       icon="notifications"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
+      title="기타 공지사항"
+      content="기타 공지사항을 적을수있는 공간으로 사용할듯"
       dateTime="11 mins ago"
       open={infoSB}
       onClose={closeInfoSB}
@@ -85,9 +83,9 @@ function Notifications() {
   const renderWarningSB = (
     <MDSnackbar
       color="warning"
-      icon="star"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
+      icon="notifications"
+      title="학식 조기 매진"
+      content="학식이 조기 매진되었다고 전달했습니다."
       dateTime="11 mins ago"
       open={warningSB}
       onClose={closeWarningSB}
@@ -96,100 +94,56 @@ function Notifications() {
     />
   );
 
-  const renderErrorSB = (
-    <MDSnackbar
-      color="error"
-      icon="warning"
-      title="Material Dashboard"
-      content="Hello, world! This is a notification message"
-      dateTime="11 mins ago"
-      open={errorSB}
-      onClose={closeErrorSB}
-      close={closeErrorSB}
-      bgWhite
-    />
-  );
-
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox mt={6} mb={3}>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} lg={8}>
-            <Card>
-              <MDBox p={2}>
-                <MDTypography variant="h5">Alerts</MDTypography>
-              </MDBox>
-              <MDBox pt={2} px={2}>
-                <MDAlert color="primary" dismissible>
-                  {alertContent("primary")}
-                </MDAlert>
-                <MDAlert color="secondary" dismissible>
-                  {alertContent("secondary")}
-                </MDAlert>
-                <MDAlert color="success" dismissible>
-                  {alertContent("success")}
-                </MDAlert>
-                <MDAlert color="error" dismissible>
-                  {alertContent("error")}
-                </MDAlert>
-                <MDAlert color="warning" dismissible>
-                  {alertContent("warning")}
-                </MDAlert>
-                <MDAlert color="info" dismissible>
-                  {alertContent("info")}
-                </MDAlert>
-                <MDAlert color="light" dismissible>
-                  {alertContent("light")}
-                </MDAlert>
-                <MDAlert color="dark" dismissible>
-                  {alertContent("dark")}
-                </MDAlert>
-              </MDBox>
-            </Card>
-          </Grid>
-
+        <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} lg={8}>
             <Card>
               <MDBox p={2} lineHeight={0}>
-                <MDTypography variant="h5">Notifications</MDTypography>
+                <MDTypography variant="h5">학식 공지</MDTypography>
                 <MDTypography variant="button" color="text" fontWeight="regular">
-                  Notifications on this page use Toasts from Bootstrap. Read more details here.
+                  식당의 현재 상황에 맞는 공지사항을 적어주세요
                 </MDTypography>
               </MDBox>
               <MDBox p={2}>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6} lg={3}>
+                <Grid container spacing={2} sx={{ justifyContent: "space-around" }}>
+                  <Grid item xs={12} sm={6} lg={6}>
                     <MDButton variant="gradient" color="success" onClick={openSuccessSB} fullWidth>
-                      success notification
+                      정상 운영
                     </MDButton>
                     {renderSuccessSB}
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
-                    <MDButton variant="gradient" color="info" onClick={openInfoSB} fullWidth>
-                      info notification
-                    </MDButton>
-                    {renderInfoSB}
-                  </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={6}>
                     <MDButton variant="gradient" color="warning" onClick={openWarningSB} fullWidth>
-                      warning notification
+                      학식 조기 매진
                     </MDButton>
                     {renderWarningSB}
-                  </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
-                    <MDButton variant="gradient" color="error" onClick={openErrorSB} fullWidth>
-                      error notification
-                    </MDButton>
-                    {renderErrorSB}
                   </Grid>
                 </Grid>
               </MDBox>
             </Card>
           </Grid>
+          <Grid item xs={12} lg={8}>
+            <Card sx={{ padding: 2 }}>
+              <TextField
+                id="notificationsMSGField"
+                label="정상운영과 조기 매진 이외에 전달할 내용을 입력해주세요"
+                multiline
+                rows={10}
+                placeholder="기타 공지사항"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={6} lg={6}>
+            <MDButton variant="gradient" color="info" onClick={openInfoSB} fullWidth>
+              공지 업로드
+            </MDButton>
+            {renderInfoSB}
+          </Grid>
         </Grid>
       </MDBox>
-      <Footer />
     </DashboardLayout>
   );
 }
