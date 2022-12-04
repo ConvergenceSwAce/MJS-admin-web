@@ -1,23 +1,11 @@
 import { atom, selector, useRecoilValue, useSetRecoilState } from "recoil";
 import axios from "axios";
 
-export const campusInfo = atom({
-  key: "campusInfo",
-  default: "seoul",
-});
-
-export const restInfo = atom({
-  key: "restInfo",
-  default: "인문캠퍼스",
-});
-
 // 식단 정보를 가져오는 API
 export const getDayByMeal = selector({
   key: "dayByMeal/get",
   get: async ({ get }) => {
-    const response = await axios.get(
-      "https://gea662yjyk.execute-api.ap-northeast-2.amazonaws.com/info"
-    );
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}`);
     console.log(response.data);
     return response.data;
   },
@@ -85,9 +73,7 @@ export function splitMealData() {
 export const getDayByMeal2 = selector({
   key: "dayByMeal/get2",
   get: async ({ get }) => {
-    const response2 = await axios.get(
-      "https://gea662yjyk.execute-api.ap-northeast-2.amazonaws.com/newJacamCrawler"
-    );
+    const response2 = await axios.get(`${process.env.REACT_APP_API_URL2}`);
     console.log(response2.data);
     return response2.data;
   },

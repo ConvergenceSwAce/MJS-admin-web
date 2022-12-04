@@ -17,6 +17,8 @@ Coded by www.creative-tim.com
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { getDayByMeal } from "states";
 
 // @mui material components
 
@@ -29,9 +31,7 @@ import { useEffect, useState } from "react";
 // Images
 
 export default function data() {
-  const [meal, setMeal] = useState([
-    { date: "2021-10-01", day: "월", lunchA: "밥", lunchB: "밥", dinner: "밥" },
-  ]);
+  const meal = useRecoilValue(getDayByMeal);
 
   return {
     columns: [
